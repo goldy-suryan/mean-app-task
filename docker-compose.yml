@@ -1,0 +1,18 @@
+version: '3.0'
+ 
+services:
+ angular:
+  build: ./client/
+  restart: always
+  ports:
+  - "4200:4200"
+  volumes:
+  - ./client:/usr/src/app
+ 
+ express:
+  build: ./
+  restart: always
+  ports:
+  - "3001:3001"
+  volumes:
+  - .:/usr/src/app

@@ -1,0 +1,24 @@
+<h2 class="text-center">Login</h2>
+<form [formGroup]="loginForm">
+    <span class="text-center text-danger" *ngIf="invalidMessage || loginForm.invalid">{{invalidMessage}}</span>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" formControlName="username" class="form-control" name="username" placeholder="username" required>
+    </div>
+    <div class=" text-danger"
+        *ngIf="username && username.invalid && (username.dirty || username.touched)">
+        <span *ngIf="username.hasError('required')">Username is required</span>
+        <span *ngIf="username.hasError('pattern')">Email not valid</span>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" formControlName="password" class="form-control" name="password" placeholder="password" required>
+    </div>
+    <div class=" text-danger"
+        *ngIf="password && password.invalid && (password.dirty || password.touched)">
+        <span *ngIf="password.hasError('required')">password is required</span>
+        <span *ngIf="password.hasError('minlength')">password must be of atleast 6 characters</span>
+        <span *ngIf="password.hasError('maxlength')">password must not be greater than 20 characters</span>
+    </div>
+    <input type="button" class="btn btn-primary" value="Log In" (click)="login()"/>
+</form>
