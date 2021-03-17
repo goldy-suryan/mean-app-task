@@ -24,3 +24,6 @@
 
 ## To test the API on swagger UI
 - Run `npm start` at the root of the project and open the browser on `http://localhost:3001/api-docs`
+
+## Live Demo
+- Open [Live](https://pactch-infotech.herokuapp.com/)
