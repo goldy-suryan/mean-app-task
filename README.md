@@ -29,4 +29,4 @@
 - Open [Live](https://pactch-infotech.herokuapp.com/)
 
 ## Github Link
-- [Open](https://pactch-infotech.herokuapp.com/login)
+- [Open](https://github.com/goldy-suryan/mean-app-task)
