@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/patchinfotech/Desktop/task/client/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /home/patchinfotech/Desktop/github_projects/task/client/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
