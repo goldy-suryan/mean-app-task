@@ -30,7 +30,6 @@ export class AuthService {
         this.store.dispatch(auth_user({isAuthenticated: false}));
         this.store.dispatch(remove_user({username: '', password: ''}));
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
         this.router.navigate(['/'])
     }
 }
