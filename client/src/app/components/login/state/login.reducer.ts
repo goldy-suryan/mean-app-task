@@ -1,6 +1,5 @@
-import { state } from "@angular/animations"
 import { createReducer, on } from "@ngrx/store"
-import { add_user, ILogin, auth_user } from "./login.action"
+import { add_user, ILogin, auth_user, remove_user } from "./login.action"
 
 
 export interface ILoginState {
@@ -25,6 +24,12 @@ const _loginReducer = createReducer(initialState,
           ...state,
           isAuthenticated: action.isAuthenticated
       }  
+    }),
+    on(remove_user, (state, {username, password}) => {
+        return {
+            ...state,
+            user: { ...state.user, username,  password}
+        }
     })
 )
 
