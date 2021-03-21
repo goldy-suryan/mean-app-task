@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { auth_user } from '../components/login/state/login.action';
+import { auth_user, remove_user } from '../components/login/state/login.action';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthService {
             if (Date.now() >= <any>jwt_decode(token)) {
                 return false;
             }
-            this.store.dispatch(auth_user({isAuthenticated: true}));
+            // this.store.dispatch(auth_user({isAuthenticated: true}));
             return true;
         }
         return false;
@@ -28,8 +28,8 @@ export class AuthService {
 
     logOut() {
         this.store.dispatch(auth_user({isAuthenticated: false}));
+        this.store.dispatch(remove_user({username: '', password: ''}));
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
         this.router.navigate(['/'])
     }
 }

@@ -47,15 +47,6 @@ export class LoginComponent implements OnInit {
       this.invalidMessage = 'Please fill the form correctly';
       return;
     }
-    this.loginService.login(this.loginForm.value).subscribe(data => {
-      if (data && data['success']) {
-        this.store.dispatch(add_user(this.loginForm.value));
-        localStorage.setItem('token', data['token']);
-        this.router.navigate(['/dashboard']);
-      }
-    }, err => {
-      this.invalidMessage = err.error.result;
-    }
-    )
+    this.store.dispatch(add_user(this.loginForm.value));
   }
 }

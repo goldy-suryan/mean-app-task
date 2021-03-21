@@ -1,11 +1,6 @@
 const router = require('express').Router();
-const User = require('../model/user.model');
-const jwt = require('jsonwebtoken');
+const loginController = require('../controller/login.controller');
 
-const mockUser = {
-    username: 'MTN_user@gmail.com',
-    password: 'MTN281#^@*'
-}
 
 /**
  * @swagger
@@ -27,7 +22,7 @@ const mockUser = {
  *         username: test@test.com
  *         password: secret
  */
-
+~
 /**
  * @swagger
  * tags:
@@ -60,24 +55,6 @@ const mockUser = {
  *         description: Some server error
  */
 
-router.post('/login', async (req, res) => {
-    try {
-        let { username, password } = req.body;
-        if (!username || !password) {
-            return res.status(401).json({ success: false, result: 'Please provide username and password' });
-        }
-        if (mockUser.username.toLocaleLowerCase() === username.toLocaleLowerCase() && mockUser.password === password) {
-            const token = jwt.sign({ user: username }, process.env.TOKEN_SECRET, {
-                expiresIn: 60 * 60
-            });
-            return res.status(200).json({ success: true, result: 'logged in successfully', user: username, token });
-        }
-
-        return res.status(401).json({ success: false, result: 'Please provide valid credentials' });
-
-    } catch (e) {
-        return res.status(500).json({ message: e.message });
-    }
-});
+router.post('/login', loginController.loginController);
 
 module.exports = router;
