@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 const path = require('path');
 const swaggerJsdocs = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
-const loginRouter = require('./routes/login.route');
+const loginRouter = require('./src/routes/login.route');
 
 
 const definition = {
