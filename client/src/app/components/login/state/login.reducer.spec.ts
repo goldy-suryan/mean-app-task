@@ -1,11 +1,22 @@
-import { ELogin } from './login.enum';
+import { add_user } from './login.action';
 import { loginReducer } from './login.reducer';
 
 fdescribe('Reducer', () => {
+  const initialState = { user: { username: '', password: '' }, isAuthenticated: false };
+
+  it('should return the default state', () => {
+    const action = {
+      type: 'Unknown',
+    };
+    const state = loginReducer(initialState, action);
+    expect(state).toBe(initialState);
+  });
+
+
   it('should have a isAuthenticated to false', () => {
-    const state = { user: {username:'', password: ''}, isAuthenticated: false };
-    const action = { type: ELogin.AUTH };
-    const expected = { user: {username:'', password: ''}, isAuthenticated: false };
-    expect(loginReducer(state, action)).toEqual(expected);
+    const expected = { user: { username: 'xyz', password: 'abc' }, isAuthenticated: false };
+    const action = add_user({username: 'xyz', password: 'abc'});
+    const state = loginReducer(initialState, action);
+    expect(state).toEqual(expected);
   });
 });
